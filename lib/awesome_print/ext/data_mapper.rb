@@ -2,7 +2,6 @@ module AwesomePrint
   module DataMapper
 
     def self.included(base)
-      binding.pry
       base.send :alias_method, :cast_without_data_mapper, :cast
       base.send :alias_method, :cast, :cast_with_data_mapper
     end
@@ -34,7 +33,6 @@ module AwesomePrint
     #
     #------------------------------------------------------------------------------
     def awesome_data_mapper_instance(object)
-      binding.pry
       return object.inspect if !defined?(::ActiveSupport::OrderedHash)
       return awesome_object(object) if @options[:raw]
 
@@ -49,7 +47,6 @@ module AwesomePrint
     # Format DataMapper class object.
     #------------------------------------------------------------------------------
     def awesome_data_mapper_class(object)
-      binding.pry
       return object.inspect if !defined?(::ActiveSupport::OrderedHash) || !object.respond_to?(:properties)
 
       data = object.properties.inject(::ActiveSupport::OrderedHash.new) do |hash, c|
