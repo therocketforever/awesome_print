@@ -9,7 +9,6 @@ module AwesomePrint
     # Add DataMapper class names to the dispatcher pipeline.
     #------------------------------------------------------------------------------
     def cast_with_data_mapper(object, type)
-      binding.pry
       cast = cast_without_data_mapper(object, type)
       return cast if !defined?(::DataMapper)
 
